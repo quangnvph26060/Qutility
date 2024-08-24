@@ -3,11 +3,10 @@
 namespace Wuang\Qutility;
 
 use Illuminate\Support\ServiceProvider;
-
+use Wuang\Qutility\Utility;
 class QutilyServiceProvider extends ServiceProvider{
 
     public function boot(\Illuminate\Contracts\Http\Kernel $mastor) {
-
         $ldRt = Wuang::ldRt();
         $this->$ldRt(__DIR__.'/routes.php');
         $router = $this->app['router'];

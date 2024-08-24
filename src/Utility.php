@@ -1,6 +1,6 @@
 <?php
 
-namespace Laramin\Utility;
+namespace Wuang\Qutility;
 
 use Closure;
 
