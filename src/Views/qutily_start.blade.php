@@ -66,7 +66,7 @@
                                 <div class="col-lg-7">
                                     <p>@lang('The purchase code(license) is for one website or domain only. Please activate the license into the correct domain(URL) to avoid any unwanted issues in the future.')</p>
                                     <form class="verForm">
-                                        @CSRF 
+                                        @csrf
                                         <div class="information-form-group">
                                             <div class="d-flex justify-content-between">
                                                 <div>
