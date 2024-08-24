@@ -14,8 +14,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Wuang\\Qutility\\QutilyServiceProvider"
+                "Wuang\\Qutility\\QuitilyServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
