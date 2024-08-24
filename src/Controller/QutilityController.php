@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\GeneralSetting;
 use Wuang\Qutility\Wuang;
 
-class QutilyController extends Controller
+class QutilityController extends Controller
 {
     public function WuangStart()
     {
