@@ -66,6 +66,7 @@
                                 <div class="col-lg-7">
                                     <p>@lang('The purchase code(license) is for one website or domain only. Please activate the license into the correct domain(URL) to avoid any unwanted issues in the future.')</p>
                                     <form class="verForm">
+                                        @CSRF 
                                         <div class="information-form-group">
                                             <div class="d-flex justify-content-between">
                                                 <div>
@@ -109,7 +110,7 @@
 	</footer>
 	<script src="{{ asset('assets/global/js/bootstrap.bundle.min.js') }}"></script>
 	<script src="{{ asset('assets/global/js/jquery-3.7.1.min.js') }}"></script>
-    {{-- @include('partials.notify')
+    @include('partials.notify')
     <script>
         (function($){
             "use strict"
@@ -118,7 +119,7 @@
                 e.preventDefault();
                 $('.alert-area').addClass('d-none');
                 $('.sbmBtn').text('Processing...');
-                var url = '{{ route(Laramin\Utility\VugiChugi::acRouterSbm()) }}';
+                var url = '{{ route(Wuang\Qutility\Wuang::acRouterSbm()) }}';
                 var data = {
                     "purchase_code":$(this).find('[name=purchase_code]').val(),
                     "email":$(this).find('[name=email]').val(),
@@ -158,7 +159,7 @@
             });
 
         })(jQuery);
-    </script> --}}
+    </script>
 </body>
 
 </html>
