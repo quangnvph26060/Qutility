@@ -14,7 +14,7 @@ class QutilityController extends Controller
     public function WuangStart()
     {
         $pageTitle = 'Active';
-        return view('laramin_start', compact('pageTitle'));
+        return view('qutily_start', compact('pageTitle'));
     }
   
     
