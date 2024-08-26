@@ -1,22 +1,24 @@
 {
-    "name": "wuangdz/qutility",
-    "description": "A Qutility package for Laravel.",
-    "type": "library",
+    "name": "laramin/utility",
+    "description": "Utility services for application.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "laramin"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
     "autoload": {
         "psr-4": {
-            "Wuang\\Qutility\\": "src/"
+            "Laramin\\Utility\\": "src/"
         }
-    },
-    "require": {
-        "php": ">=8.3"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Wuang\\Qutility\\QutilyServiceProvider"
+                "Laramin\\Utility\\UtilityServiceProvider"
             ]
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }

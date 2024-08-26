@@ -1,8 +1,8 @@
 <?php
 
-namespace Wuang\Qutility;
+namespace Laramin\Utility;
 
-class Wuang{
+class VugiChugi{
 
     public static function variab()
     {
@@ -57,7 +57,7 @@ class Wuang{
     public static function lcLabSbm()
     {
         $variab = self::variab();
-        return $variab('http://127.0.0.1:8000');
+        return $variab('uggcf://yvprafr.ivfreyno.pbz/npgvingr');
     }
 
     public static function clsNm(){

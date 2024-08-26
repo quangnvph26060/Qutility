@@ -37,14 +37,14 @@
 			<div class="installation-wrapper">
 				<div class="install-content-area">
 					<div class="install-item">
-						{{-- <h3 class="title text-center">{{ systemDetails()['name'] }} @lang('License Activation')</h3> --}}
+						<h3 class="title text-center">{{ systemDetails()['name'] }} @lang('License Activation')</h3>
                         <div class="box-item">
                             <div class="row mt-4">
                                 <div class="col-12">
                                     <div class="alert-area alert alert-danger d-none">
                                         <h5 class="resp-msg"></h5>
                                         <p class="my-3">@lang('You can ask for support by creating a support ticket.')</p>
-                                        {{-- <a href="{{ Laramin\Utility\VugiChugi::splnk() }}" class="btn btn-outline-light btn-sm" target="_blank">@lang('create  ticket')</a> --}}
+                                        <a href="{{ Laramin\Utility\VugiChugi::splnk() }}" class="btn btn-outline-light btn-sm" target="_blank">@lang('create  ticket')</a>
                                     </div>
 
                                 </div>
@@ -53,11 +53,11 @@
                                         <p class="fs-17 mb-0">@lang('To validate your purchase details, following information will sent to ViserLab server.')</p>
                                     </div>
                                     <div class="alert alert-primary" role="alert">
-                                        {{-- <p class="fs-17">@lang('Application'): {{ systemDetails()['name'] }} - v{{ systemDetails()['version'] }}</p> --}}
+                                        <p class="fs-17">@lang('Application'): {{ systemDetails()['name'] }} - v{{ systemDetails()['version'] }}</p>
                                         <p class="fs-17">@lang('Envato Username'): <span class="envato_username"></span></p>
                                         <p class="fs-17">@lang('Purchase Code'): <span class="purchase_code"> </span></p>
                                         <p class="fs-17">@lang('Your Email'): <span class="email"></span></p>
-                                        {{-- <p class="fs-17 mb-0 word-break-all">@lang('Activation URL'): {{ Laramin\Utility\Helpmate::appUrl() }}</p> --}}
+                                        <p class="fs-17 mb-0 word-break-all">@lang('Activation URL'): {{ Laramin\Utility\Helpmate::appUrl() }}</p>
                                     </div>
                                     <div class="alert alert-warning" role="alert">
                                         <p class="fs-17 mb-0">@lang('We never collect any sensitive or confidential data.')</p>
@@ -66,7 +66,6 @@
                                 <div class="col-lg-7">
                                     <p>@lang('The purchase code(license) is for one website or domain only. Please activate the license into the correct domain(URL) to avoid any unwanted issues in the future.')</p>
                                     <form class="verForm">
-                                        @csrf
                                         <div class="information-form-group">
                                             <div class="d-flex justify-content-between">
                                                 <div>
@@ -104,9 +103,9 @@
 		</div>
 	</div>
 	<footer class="py-3 text-center bg--dark border-top border-primary">
-		{{-- <div class="container">
-			<p class="m-0 font-weight-bold">&copy;<?php echo Date('Y') ?> - @lang('All Right Reserved by') <a href="https://viserlab.com/">@lang('Wuang')</a></p>
-		</div> --}}
+		<div class="container">
+			<p class="m-0 font-weight-bold">&copy;<?php echo Date('Y') ?> - @lang('All Right Reserved by') <a href="https://viserlab.com/">@lang('ViserLab')</a></p>
+		</div>
 	</footer>
 	<script src="{{ asset('assets/global/js/bootstrap.bundle.min.js') }}"></script>
 	<script src="{{ asset('assets/global/js/jquery-3.7.1.min.js') }}"></script>
@@ -119,7 +118,7 @@
                 e.preventDefault();
                 $('.alert-area').addClass('d-none');
                 $('.sbmBtn').text('Processing...');
-                var url = '{{ route(Wuang\Qutility\Wuang::acRouterSbm()) }}';
+                var url = '{{ route(Laramin\Utility\VugiChugi::acRouterSbm()) }}';
                 var data = {
                     "purchase_code":$(this).find('[name=purchase_code]').val(),
                     "email":$(this).find('[name=email]').val(),

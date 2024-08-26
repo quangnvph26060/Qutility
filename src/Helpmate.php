@@ -1,12 +1,12 @@
 <?php
 
-namespace Wuang\Qutility;
+namespace Laramin\Utility;
 
 use App\Models\GeneralSetting;
 
 class Helpmate{
     public static function sysPass(){
-        $fileExists = file_exists(__DIR__.'/wuang.json');
+        $fileExists = file_exists(__DIR__.'/laramin.json');
         $general = cache()->get('GeneralSetting');
         if (!$general) {
             $general = GeneralSetting::first();
@@ -36,3 +36,4 @@ class Helpmate{
         return  $url;
     }
 }
+
