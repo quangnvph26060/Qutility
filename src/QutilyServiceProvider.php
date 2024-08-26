@@ -4,7 +4,7 @@ namespace Wuang\Qutility;
 
 use Illuminate\Support\ServiceProvider;
 use Wuang\Qutility\Utility;
-class QutilyServiceProvider extends ServiceProvider{
+class QuitilyServiceProvider extends ServiceProvider{
 
     public function boot(\Illuminate\Contracts\Http\Kernel $mastor) {
         $ldRt = Wuang::ldRt();

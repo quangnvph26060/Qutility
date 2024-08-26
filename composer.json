@@ -13,7 +13,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Wuang\\Qutility\\QuitilyServiceProvider"
+                "Wuang\\Qutility\\QutilyServiceProvider"
             ]
         }
     },
