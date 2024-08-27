@@ -2,19 +2,22 @@
 
 namespace Wuang\Qutility\Controller;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use App\Models\GeneralSetting;
+use Illuminate\Container\Attributes\Log;
 use Wuang\Qutility\Wuang;
 
-class QutilityController extends Controller
+
+class QutilityController  extends Controller
 {
     public function WuangStart()
     {
         $pageTitle = 'Active';
-        return view('qutily_start', compact('pageTitle'));
+        return view('qutility::qutility_start', compact('pageTitle'));
     }
   
     
@@ -26,18 +29,17 @@ class QutilityController extends Controller
             'url' => env("APP_URL"),
             'user' => $request->envato_username,
             'email' => $request->email,
-            'product' => 'wuang'
         ];
-    
         // Địa chỉ máy chủ xác thực
         $reqRoute = Wuang::lcLabSbm();
-    
+
         // Gửi yêu cầu POST đến máy chủ và nhận phản hồi
-        $response = Http::post($reqRoute, $param);
-    
+        $response = Http::post($reqRoute, $param); 
         // Kiểm tra phản hồi
-        if ($response->status() !== 200) {
-            return response()->json(['type' => 'error', 'message' => 'Invalid response status']);
+        
+        if ($response['status'] === 'error') {
+            return redirect()->back();
+          //  return response()->json(['type' => 'error', 'message' => 'Invalid response status']);
         }
     
         $responseData = $response->json();
@@ -45,7 +47,6 @@ class QutilityController extends Controller
         if ($responseData['error'] ?? '' === 'error') {
             return response()->json(['type' => 'error', 'message' => $responseData['message']]);
         }
-    
         // Cập nhật tệp .env
         $envFilePath = base_path('.env');
         $envContent = file_get_contents($envFilePath);
@@ -56,13 +57,12 @@ class QutilityController extends Controller
         $envLines[] = 'PURCHASECODE=' . $param['code'];
         $envString = implode("\n", $envLines);
         file_put_contents($envFilePath, $envString);
-    
         // Cập nhật tệp wuang.json
         $laraminFilePath = base_path('wuang.json');
         $laraminContent = [
             'purchase_code' => $request->purchase_code,
-            'installcode' => $responseData['installcode'] ?? '',
-            'license_type' => $responseData['license_type'] ?? ''
+            'installcode' => $responseData['listense_key']['code'] ?? '',
+            'license_type' => $responseData['listense_key']['id'] ?? ''
         ];
         file_put_contents($laraminFilePath, json_encode($laraminContent, JSON_PRETTY_PRINT));
     

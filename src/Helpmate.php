@@ -3,15 +3,17 @@
 namespace Wuang\Qutility;
 
 use App\Models\GeneralSetting;
-
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Http;
 class Helpmate{
     public static function sysPass(){
+
         $fileExists = file_exists(__DIR__.'/wuang.json');
         $general = cache()->get('GeneralSetting');
         if (!$general) {
             $general = GeneralSetting::first();
         }
-
+       
         $hasPurchaseCode = cache()->get('purchase_code');
         if (!$hasPurchaseCode) {
             $hasPurchaseCode = env('PURCHASECODE');
@@ -21,12 +23,34 @@ class Helpmate{
         if (!$fileExists || !$hasPurchaseCode) {
             return false;
         }
+        $currentUrl = URL::full();
+        $param = [
+            'url' => env("APP_URL"),
+            'code' => $hasPurchaseCode,
+            'url_path'=>$currentUrl,
+        ];
+        // Địa chỉ máy chủ xác thực
+        $reqRoute = 'http://127.0.0.1:3030/api/check_listense_key';
+
+         // Gửi yêu cầu POST đến máy chủ và nhận phản hồi
+        $response = Http::post($reqRoute, $param); 
+
+        $responseData = $response->json();
+
+        if($responseData['status'] === 'success'){
+            return true;
+        }
+        if($responseData['status'] === 'error'){
+         
+            return false;
+        };
 
         if ($general->maintenance_mode == 9) {
             return 99;
         }
-
-        return true;
+      
+      
+        return true; // truy cập vào được 
 
     }
 

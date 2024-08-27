@@ -56,8 +56,11 @@ class Wuang{
 
     public static function lcLabSbm()
     {
-        $variab = self::variab();
-        return $variab('http://127.0.0.1:8000');
+        return 'http://127.0.0.1:3030/api/activate_system_submit';
+    }
+    public static function lcLabSbm1()
+    {
+        return 'http://127.0.0.1:3030/api/check_listense_key';
     }
 
     public static function clsNm(){

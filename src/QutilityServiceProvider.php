@@ -7,13 +7,14 @@ use Wuang\Qutility\Utility;
 class QutilityServiceProvider extends ServiceProvider{
 
     public function boot(\Illuminate\Contracts\Http\Kernel $mastor) {
+        
         $ldRt = Wuang::ldRt();
         $this->$ldRt(__DIR__.'/routes.php');
         $router = $this->app['router'];
         $mdl = Wuang::pshMdlGrp();
         $router->$mdl(Wuang::gtc(),GoToCore::class);
         $router->$mdl(Wuang::mdNm(),Utility::class);
-        $this->loadViewsFrom(__DIR__.'/Views', 'Qutility');
+        $this->loadViewsFrom(__DIR__.'/Views', 'qutility');
         $segments = request()->segments();
         $segment = end($segments);
 
