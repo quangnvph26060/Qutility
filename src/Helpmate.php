@@ -23,7 +23,7 @@ class Helpmate{
         if (!$fileExists || !$hasPurchaseCode) {
             return false;
         }
-        $currentUrl = URL::full();
+        $currentUrl = URL::to('/');
         $param = [
             'url' => env("APP_URL"),
             'code' => $hasPurchaseCode,
